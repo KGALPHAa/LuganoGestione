@@ -1,25 +1,28 @@
 // Configura Firebase (inserisci le tue credenziali)
 const firebaseConfig = {
-    apiKey: "AIzaSyA7P7Ln_7uyn48w8xIbyostg-HjbpYkRTg",
-    authDomain: "luganogestione.firebaseapp.com",
-    projectId: "luganogestione",
-    storageBucket: "luganogestione.firebasestorage.app",
-    messagingSenderId: "688116369162",
-    appId: "1:688116369162:web:e3ab9df0147d3216fb1cf3",
-    measurementId: "G-78CKG3S2NC"
+    apiKey: "TUO_API_KEY",
+    authDomain: "TUO_AUTH_DOMAIN",
+    databaseURL: "TUO_DATABASE_URL",
+    projectId: "TUO_PROJECT_ID",
+    storageBucket: "TUO_STORAGE_BUCKET",
+    messagingSenderId: "TUO_MESSAGING_SENDER_ID",
+    appId: "TUO_APP_ID"
 };
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
+// Mostra la modale per creare un nuovo conto
 document.getElementById("nuovoConto").addEventListener("click", function () {
     document.getElementById("modal").style.display = "block";
 });
 
+// Chiudi la modale
 document.getElementById("chiudiModal").addEventListener("click", function () {
     document.getElementById("modal").style.display = "none";
 });
 
+// Aggiungi un nuovo conto
 document.getElementById("confermaConto").addEventListener("click", function () {
     const nome = document.getElementById("nomeConto").value.trim();
     if (nome) {
@@ -30,7 +33,7 @@ document.getElementById("confermaConto").addEventListener("click", function () {
     }
 });
 
-// Funzione per aggiornare la lista dei conti
+// Aggiorna la lista dei conti in tempo reale
 db.ref("conti").on("value", (snapshot) => {
     const contiList = document.getElementById("contiList");
     contiList.innerHTML = "";
@@ -41,7 +44,7 @@ db.ref("conti").on("value", (snapshot) => {
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${conto.nome}</td>
-            <td>${conto.saldo.toFixed(2)}</td>
+            <td>€ ${conto.saldo.toFixed(2)}</td>
             <td>
                 <button class="add" data-id="${contoID}">Aggiungi</button>
                 <button class="withdraw" data-id="${contoID}">Preleva</button>
@@ -50,6 +53,7 @@ db.ref("conti").on("value", (snapshot) => {
         contiList.appendChild(row);
     });
 
+    // Aggiunta saldo
     document.querySelectorAll(".add").forEach((button) => {
         button.addEventListener("click", function () {
             const id = this.getAttribute("data-id");
@@ -66,6 +70,7 @@ db.ref("conti").on("value", (snapshot) => {
         });
     });
 
+    // Prelievo saldo
     document.querySelectorAll(".withdraw").forEach((button) => {
         button.addEventListener("click", function () {
             const id = this.getAttribute("data-id");
