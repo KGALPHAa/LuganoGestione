@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Conti</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestione Conti</h1>
+        <button id="nuovoConto">Nuovo Conto</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome Conto</th>
+                    <th>Saldo (€)</th>
+                    <th>Azioni</th>
+                </tr>
+            </thead>
+            <tbody id="contiList"></tbody>
+        </table>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Crea un nuovo conto</h2>
+            <input type="text" id="nomeConto" placeholder="Nome del conto">
+            <button id="confermaConto">Conferma</button>
+            <button id="chiudiModal">Annulla</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
