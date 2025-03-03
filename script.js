@@ -1,12 +1,12 @@
 // Configura Firebase (inserisci le tue credenziali)
 const firebaseConfig = {
-    apiKey: "TUO_API_KEY",
-    authDomain: "TUO_AUTH_DOMAIN",
-    databaseURL: "TUO_DATABASE_URL",
-    projectId: "TUO_PROJECT_ID",
-    storageBucket: "TUO_STORAGE_BUCKET",
-    messagingSenderId: "TUO_MESSAGING_SENDER_ID",
-    appId: "TUO_APP_ID"
+    apiKey: "AIzaSyA7P7Ln_7uyn48w8xIbyostg-HjbpYkRTg",
+    authDomain: "luganogestione.firebaseapp.com",
+    projectId: "luganogestione",
+    storageBucket: "luganogestione.firebasestorage.app",
+    messagingSenderId: "688116369162",
+    appId: "1:688116369162:web:e3ab9df0147d3216fb1cf3",
+    measurementId: "G-78CKG3S2NC"
 };
 
 firebase.initializeApp(firebaseConfig);
